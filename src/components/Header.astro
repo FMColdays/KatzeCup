@@ -1,0 +1,129 @@
+---
+import Navegacion from "./Navegacion.astro";
+import Menu from "@/icons/Menu.astro";
+const navegacion = [
+  [
+    { nombre: "Inicio", link: "/" },
+    { nombre: "Torneos", link: "/torneos/" },
+    { nombre: "Participantes", link: "/participantes/" },
+    { nombre: "Inscripción", link: "/inscripcion/" },
+  ],
+  { header: true },
+];
+---
+
+<header>
+  <div>
+    <a class="inicio-link" href="/">
+      <img
+        src="/img/logo.webp"
+        alt="logo"
+        width="300"
+        height="300"
+        loading="lazy"
+        decoding="async"
+      />
+      <h3>SoyKatze</h3>
+    </a>
+
+    <Navegacion navegacion={navegacion} />
+
+    <a class="toggle-button" href="#nav" aria-label="Ayuda a cambiar el nav">
+      <Menu />
+    </a>
+  </div>
+</header>
+
+<style>
+  /* Estilos principales del header */
+  header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+    z-index: 1;
+    background-color: #fef9f3;
+    border-bottom: 0.2rem solid #000000;
+  }
+
+  @media (width >= 768px) {
+    header {
+      padding: 1rem 3rem;
+    }
+  }
+
+  header > div {
+    position: relative;
+    justify-content: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .inicio-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    font-size: 2.5rem;
+  }
+
+  @media (width >= 576px) {
+    .inicio-link {
+      font-size: 3rem;
+    }
+  }
+
+  header img {
+    width: 55px;
+  }
+
+  @media (width >= 576px) {
+    header img {
+      width: 70px;
+    }
+  }
+
+  .toggle-button {
+    display: flex;
+    color: var(--color-primario);
+  }
+
+  @media (width >=950px) {
+    .toggle-button {
+      display: none;
+    }
+  }
+
+  /* Estilos globales para la navegación */
+  header :global(nav) {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.2s;
+    background-color: rgb(255 255 255 / 0.9);
+  }
+
+  header :global(nav:target) {
+    transform: translateY(0);
+  }
+
+  @media (width >=950px) {
+    header :global(nav) {
+      position: static;
+      background-color: initial;
+      height: auto;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2rem;
+      transform: translateY(0);
+    }
+  }
+</style>

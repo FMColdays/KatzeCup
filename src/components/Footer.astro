@@ -1,0 +1,41 @@
+---
+import Navegacion from "./Navegacion.astro";
+const navegacion = [
+  [
+    { nombre: "Instagram", link: "https://www.instagram.com/soy_katze/" },
+    { nombre: "Facebook", link: "https://www.facebook.com/SoyKatze" },
+    { nombre: "Twitter", link: "https://twitter.com/SoyKatze" },
+    { nombre: "Youtube", link: "https://www.youtube.com/@Soy_Katze" },
+    { nombre: "Tiktok", link: "https://www.tiktok.com/@soy_katze" },
+  ],
+  { header: false },
+];
+---
+
+<footer>
+  <Navegacion navegacion={navegacion} />
+</footer>
+
+<style>
+  footer {
+    backdrop-filter: blur(10px);
+    background-color: #fef9f3;
+    border-top: 0.2rem solid #000000;
+  }
+  footer :global(nav) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+    max-width: 100rem;
+    margin: 0 auto;
+    padding-block: 2rem;
+  }
+
+  @media (width >=768px) {
+    footer :global(nav) {
+      flex-direction: row;
+    }
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import BotonGeneral from "../Utilities/BotonGeneral.astro";
+---
+
+<section>
+  <div>
+    <h1><strong>Participa en torneos</strong>, y gana premios!</h1>
+    <p>
+      Regístrate ahora y sé parte de la acción, donde la diversión y la
+      competitividad se encuentran para crear momentos inolvidables
+    </p>
+    <p>Hagamos crecer a la comunidad gamer! (:</p>
+    <BotonGeneral texto="Iniciar sesión" color="#38a1a5" />
+  </div>
+  <img
+    src="https://www.browsercat.com/brand/icon.svg"
+    alt="icon"
+    loading="lazy"
+    width="300"
+    height="300"
+  />
+</section>
+
+<style>
+  section {
+    max-width: 100rem;
+    margin: 0 auto;
+    padding-block: 3rem;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    color: #38a1a5;
+  }
+
+  @media (width >= 1056px) {
+    section {
+      padding-block: 9.3rem;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  section div {
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  @media (width >= 1056px) {
+    section div {
+      max-width: 80rem;
+      gap: 4rem;
+    }
+  }
+
+  h1 {
+    font-size: 5.2rem;
+    color: #382c32;
+    line-height: 1;
+  }
+
+  @media (widt >= 768px) {
+    h1 {
+      font-size: 5.5rem;
+    }
+  }
+
+  section p {
+    font-size: 1.9rem;
+    color: #ffffff;
+    text-shadow: 2px 2px #382c32;
+  }
+
+  section img {
+    width: 30rem;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    section img {
+      width: 40rem;
+    }
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+const { texto, color, id } = Astro.props;
+---
+
+<button id={id && id} class="btn-sesion">
+  {texto}
+</button>
+
+<style define:vars={{ color }}>
+  .btn-sesion {
+    display: block;
+    color: #ffffff;
+    background-color: var(--color);
+    border: 2px solid #000000;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition:
+      color 300ms ease-in-out,
+      background-color 300ms ease-in-out;
+  }
+
+  .btn-sesion:hover {
+    background-color: #e298c8;
+  }
+</style>

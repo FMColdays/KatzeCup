@@ -1,0 +1,78 @@
+---
+import Close from "@/icons/Close.astro";
+import BotonGeneral from "./Utilities/BotonGeneral.astro";
+import { getSession } from "auth-astro/server";
+const { navegacion } = Astro.props;
+const session = await getSession(Astro.request);
+---
+
+<nav id="nav">
+  {
+    navegacion[0].map(({ nombre, link }) => {
+      return (
+        <a
+          href={link}
+          target={navegacion[1].header ? undefined : "_blank"}
+          rel={navegacion[1].header ? undefined : "noopener noreferrer"}
+        >
+          {nombre}
+        </a>
+      );
+    })
+  }
+
+  {
+    navegacion[1].header && (
+      <>
+        {!session && <BotonGeneral id="login-boton"  texto="Iniciar sesión" color="#dc89bf" />}
+
+        <a
+          class="toggle-button cerrar"
+          arial-label="Cierra el nav"
+          href="#nonav"
+          aria-label="Ayuda a cambiar el nav"
+        >
+          <Close />
+        </a>
+      </>
+    )
+  }
+</nav>
+
+<script>
+  const { signIn } = await import("auth-astro/client");
+  const $boton = document.querySelector("#login-boton");
+
+  $boton?.addEventListener("click", async (event) => {
+    event.preventDefault;
+    await signIn("twitch", {
+      callbackUrl: "/torneos",
+    });
+  });
+</script>
+
+<style>
+  a {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--color-primario);
+    transition:
+      background-color 300ms ease-in-out,
+      color 300ms ease-in-out;
+  }
+
+  a:hover {
+    color: #f975ce;
+  }
+
+  .toggle-button.cerrar {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+  @media (width >= 950px) {
+    .toggle-button.cerrar {
+      display: none;
+    }
+  }
+</style>
